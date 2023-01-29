@@ -4,7 +4,6 @@ import yargs, { type Argv, type MiddlewareFunction } from 'yargs'
 
 import type { CommandModule } from 'lib/command-module.js'
 import { defaultMiddleware } from 'lib/context.js'
-import { printAvailableCommands } from 'lib/print-available-commands.js'
 
 export interface LandlubberOptions {
   middleware?: MiddlewareFunction[]
@@ -20,8 +19,5 @@ export const landlubber = (
   // https://github.com/yargs/yargs/issues/2211
   for (const command of commands) argv.command(command)
 
-  return argv
-    .demandCommand(1, 1, printAvailableCommands(commands))
-    .recommendCommands()
-    .strict()
+  return argv.demandCommand(1, 1).recommendCommands().strict()
 }
