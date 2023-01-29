@@ -7,10 +7,10 @@ The quickest way to write commands for yargs without leaving the shore.
 
 ## Description
 
-Landlubber is a tiny wrapper around [yargs]:
+Landlubber is a tiny wrapper around [yargs].
 
-- Writing commands as modules.
-- Pretty logging with [pino] and [pino-pretty].
+- Streamlines writing commands as individual ES modules modules.
+- Has pretty logging with [pino] and [pino-pretty].
 - Written in TypeScript so command arguments and context are fully typed.
 
 [pino]: https://getpino.io/
