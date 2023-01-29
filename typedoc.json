@@ -1,0 +1,9 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "includeVersion": true,
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "navigationLinks": {
+    "GitHub": "https://github.com/razor-x/landlubber"
+  }
+}
