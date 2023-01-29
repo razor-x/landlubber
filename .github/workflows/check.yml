@@ -133,3 +133,22 @@ jobs:
           node_version: ${{ matrix.node }}
       - name: Typecheck
         run: npm run typecheck
+  example:
+    name: Example (Node.js v${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        node:
+          - '16'
+          - '18'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          node_version: ${{ matrix.node }}
+      - name: Example
+        run: npm run example adventure
