@@ -13,7 +13,10 @@ export type Handler<Options = EmptyOptions, Context = DefaultContext> = (
 export type EmptyOptions = Record<string, never>
 
 export interface CommandModule {
-  command: Command
-  builder: Builder
+  aliases?: readonly string[] | string | undefined
+  builder?: Builder
+  command?: Command
+  deprecated?: boolean | string | undefined
+  describe?: string | false | undefined
   handler: Handler<any, any>
 }

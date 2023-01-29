@@ -6,4 +6,4 @@ import * as todo from './todo.js'
 
 const commands = [todo]
 
-await landlubber(commands)
+await landlubber(commands).parse()
