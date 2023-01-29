@@ -1,5 +1,3 @@
-import { setTimeout } from 'node:timers/promises'
-
 import type { Builder, Command, Describe, Handler } from 'index.js'
 
 interface Options {
@@ -35,7 +33,7 @@ export const handler: Handler<Options> = async ({
 }) => {
   logger.info({ adventurer, age }, 'Ready for adventure!')
 
-  const currentLevel = await setTimeout(0, getLevel())
+  const currentLevel = await getLevel()
 
   if (currentLevel < minLevel) {
     const err = new Error('Level too low.')
@@ -46,4 +44,4 @@ export const handler: Handler<Options> = async ({
   logger.info({ adventurer, age, currentLevel }, 'You leveled up!')
 }
 
-const getLevel = (): number => Math.floor(10 * Math.random())
+const getLevel = async (): Promise<number> => Math.floor(10 * Math.random())
