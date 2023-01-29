@@ -1,6 +1,6 @@
 {
   "name": "landlubber",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Quickest way to write commands for yargs without leaving the shore.",
   "type": "module",
   "main": "index.js",
