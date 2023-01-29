@@ -14,20 +14,23 @@ export const describe: Describe = 'Go on an adventure!'
 
 export const builder: Builder = {
   adventurer: {
-    type: 'string'
+    type: 'string',
+    default: 'Finn'
   },
   age: {
-    type: 'number'
+    type: 'number',
+    default: 12
   },
   minLevel: {
-    type: 'number'
+    type: 'number',
+    default: 3
   }
 }
 
 export const handler: Handler<Options> = async ({
-  adventurer = 'Finn',
-  age = 12,
-  minLevel = 3,
+  adventurer,
+  age,
+  minLevel,
   logger
 }) => {
   logger.info({ adventurer, age }, 'Ready for adventure!')
