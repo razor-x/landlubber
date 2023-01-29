@@ -1,4 +1,4 @@
-import { type LoggerContext, createLogger } from './logger.js'
+import { type LoggerContext, createLogger } from 'lib/logger.js'
 
 export type DefaultContext = LoggerContext
 
