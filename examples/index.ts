@@ -3,7 +3,8 @@
 import landlubber from 'index.js'
 
 import * as adventure from './adventure.js'
+import * as hello from './hello.js'
 
-const commands = [adventure]
+const commands = [adventure, hello]
 
 await landlubber(commands).parse()
