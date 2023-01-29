@@ -2,8 +2,8 @@
 
 import landlubber from 'index.js'
 
-import * as todo from './todo.js'
+import * as adventure from './adventure.js'
 
-const commands = [todo]
+const commands = [adventure]
 
 await landlubber(commands).parse()
