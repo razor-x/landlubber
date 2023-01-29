@@ -14,10 +14,13 @@ export const landlubber = async (
   commands: CommandModule[] = [],
   { middleware = defaultMiddleware }: LandlubberOptions = {}
 ): Promise<void> => {
-  await yargs(process.argv.slice(2))
-    .middleware(middleware)
-    // @ts-expect-error UPSTREAM: https://github.com/yargs/yargs/issues/2211
-    .command(commands)
+  const parser = yargs(process.argv.slice(2)).middleware(middleware)
+
+  // UPSTREAM: Array argument overload type for yargs.command not implemented.
+  // https://github.com/yargs/yargs/issues/2211
+  for (const command of commands) parser.command(command)
+
+  await parser
     .demandCommand(1, 1, printAvailableCommands(commands))
     .recommendCommands()
     .strict()
