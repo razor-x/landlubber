@@ -55,6 +55,7 @@
     "npm": ">= 8.1.0"
   },
   "dependencies": {
+    "pino": "^8.8.0",
     "pino-pretty": "^9.1.1",
     "prettier": "^2.3.0",
     "yargs": "^17.6.2"
@@ -68,7 +69,6 @@
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-config-standard-with-typescript": "^33.0.0",
-    "pino": "^8.8.0",
     "tsc-alias": "^1.8.2",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4"
