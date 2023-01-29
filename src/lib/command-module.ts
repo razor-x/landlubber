@@ -1,4 +1,4 @@
-import type { CommandBuilder } from 'yargs'
+import type { CommandBuilder, CommandModule as YargsCommandModule } from 'yargs'
 
 import type { DefaultContext } from 'lib/context.js'
 
@@ -12,11 +12,6 @@ export type Handler<Options = EmptyOptions, Context = DefaultContext> = (
 
 export type EmptyOptions = Record<string, never>
 
-export interface CommandModule {
-  aliases?: readonly string[] | string | undefined
-  builder?: Builder
-  command?: Command
-  deprecated?: boolean | string | undefined
-  describe?: string | false | undefined
+export type CommandModule = Omit<YargsCommandModule, 'handler'> & {
   handler: Handler<any, any>
 }
