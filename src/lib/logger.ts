@@ -1,4 +1,5 @@
 import { type Logger, pino } from 'pino'
+import pinoPretty from 'pino-pretty'
 import type { MiddlewareFunction } from 'yargs'
 
 export interface LoggerContext {
@@ -6,9 +7,6 @@ export interface LoggerContext {
 }
 
 export const createLogger: MiddlewareFunction = (argv) => {
-  argv['logger'] = pino({
-    transport: {
-      target: 'pino-pretty'
-    }
-  })
+  const stream = pinoPretty.default()
+  argv['logger'] = pino(stream)
 }
