@@ -1,6 +1,4 @@
-import { todo } from 'index.js'
-
-import type { Builder, Command, Handler } from './types.js'
+import { type Builder, type Command, type Handler, todo } from 'index.js'
 
 interface Options {
   x: string
