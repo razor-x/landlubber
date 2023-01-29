@@ -11,3 +11,9 @@ export type Handler<Options = EmptyOptions, Context = DefaultContext> = (
 ) => void | Promise<void>
 
 export type EmptyOptions = Record<string, never>
+
+export interface CommandModule {
+  command: Command
+  builder: Builder
+  handler: Handler<any, any>
+}

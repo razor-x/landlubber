@@ -1,7 +1,8 @@
 import process from 'node:process'
 
-import yargs, { type CommandModule, type MiddlewareFunction } from 'yargs'
+import yargs, { type MiddlewareFunction } from 'yargs'
 
+import type { CommandModule } from 'lib/command-module.js'
 import { defaultMiddleware } from 'lib/context.js'
 import { printAvailableCommands } from 'lib/print-available-commands.js'
 
