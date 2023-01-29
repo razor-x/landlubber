@@ -28,6 +28,22 @@ test('command runs with test context', async (t) => {
   }).parse()
 })
 
+test('runs multiple commands', async (t) => {
+  const testMiddleware: MiddlewareFunction = (argv) => {
+    argv['t'] = t
+  }
+
+  await landlubber([defaultCommand, assertCommand], {
+    middleware: [testMiddleware],
+    argv: ['', '', 'foo', 'bar']
+  }).parse()
+
+  await landlubber([defaultCommand, assertCommand], {
+    middleware: [testMiddleware],
+    argv: ['', '', 'assert', 'bar']
+  }).parse()
+})
+
 test('logger is in default context', async (t) => {
   const testMiddleware: MiddlewareFunction = (argv) => {
     argv['t'] = t
