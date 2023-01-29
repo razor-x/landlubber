@@ -3,11 +3,19 @@
 [![npm](https://img.shields.io/npm/v/landlubber.svg)](https://www.npmjs.com/package/landlubber)
 [![GitHub Actions](https://github.com/razor-x/landlubber/actions/workflows/check.yml/badge.svg)](https://github.com/razor-x/landlubber/actions/workflows/check.yml)
 
-Quickest way to write commands for yargs without leaving the shore.
+The quickest way to write commands for yargs without leaving the shore.
 
 ## Description
 
-TODO
+Landlubber is a tiny wrapper around [yargs].
+
+- Streamline writing commands as individual ES modules.
+- Has pretty logging with [pino] and [pino-pretty].
+- Written in TypeScript so command arguments and context are fully typed.
+
+[pino]: https://getpino.io/
+[pino-pretty]: https://github.com/pinojs/pino-pretty
+[yargs]: https://yargs.js.org/
 
 ## Installation
 
@@ -18,6 +26,88 @@ $ npm install landlubber
 ```
 
 [npm]: https://www.npmjs.com/
+
+## Usage
+
+### Hello world
+
+#### TypeScript
+
+##### hello.ts
+
+```ts
+import type { Builder, Command, Describe, Handler } from 'landlubber'
+
+interface Options {
+  name: string
+}
+
+export const command: Command = 'hello name'
+
+export const describe: Describe = 'Say hello'
+
+export const builder: Builder = {
+  name: {
+    type: 'string',
+    default: 'landlubber',
+    describe: 'Who to greet'
+  }
+}
+
+export const handler: Handler<Options> = async ({ name, logger }) => {
+  logger.info({ landlubber: name }, 'Ahoy!')
+}
+```
+
+##### index.ts
+
+```ts
+#!/usr/bin/env tsx
+
+import landlubber from 'landlubber'
+
+import * as hello from './hello.js'
+
+const commands = [hello]
+
+await landlubber(commands).parse()
+```
+
+#### JavaScript
+
+##### hello.js
+
+```ts
+export const command = 'hello name'
+
+export const describe = 'Say hello'
+
+export const builder = {
+  name: {
+    type: 'string',
+    default: 'landlubber',
+    describe: 'Who to greet'
+  }
+}
+
+export const handler = async ({ name, logger }) => {
+  logger.info({ landlubber: name }, 'Ahoy!')
+}
+```
+
+##### index.js
+
+```js
+#!/usr/bin/env node
+
+import landlubber from 'landlubber'
+
+import * as hello from './hello.js'
+
+const commands = [hello]
+
+await landlubber(commands).parse()
+```
 
 ## Development and Testing
 
@@ -100,20 +190,13 @@ _GitHub Actions should already be configured: this section is for reference only
 The following repository secrets must be set on [GitHub Actions]:
 
 - `NPM_TOKEN`: npm token for installing and publishing packages.
-
-These must be set manually.
-
-### Secrets for Optional GitHub Actions
-
-The version and format GitHub actions
-require a user with write access to the repository.
-Set these additional secrets to enable the action:
-
 - `GH_TOKEN`: A personal access token for the user.
 - `GIT_USER_NAME`: The GitHub user's real name.
 - `GIT_USER_EMAIL`: The GitHub user's email.
 - `GPG_PRIVATE_KEY`: The GitHub user's [GPG private key].
 - `GPG_PASSPHRASE`: The GitHub user's GPG passphrase.
+
+These must be set manually.
 
 [GitHub Actions]: https://github.com/features/actions
 [GPG private key]: https://github.com/marketplace/actions/import-gpg#prerequisites

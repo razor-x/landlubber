@@ -133,3 +133,44 @@ jobs:
           node_version: ${{ matrix.node }}
       - name: Typecheck
         run: npm run typecheck
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Docs
+        run: npm run docs
+  example:
+    name: Example (Node.js v${{ matrix.node }} on ${{ matrix.os_name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        node:
+          - '16'
+          - '18'
+        include:
+          - os: ubuntu-latest
+            os_name: Linux
+          - os: macos-latest
+            os_name: macOS
+          - os: windows-latest
+            os_name: Windows
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          node_version: ${{ matrix.node }}
+      - name: Example
+        run: npm run example adventure

@@ -11,6 +11,7 @@
 *.js.map
 
 # Build directories
+docs
 package
 
 # Environment versions file
