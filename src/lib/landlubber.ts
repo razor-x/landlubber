@@ -3,14 +3,14 @@ import process from 'node:process'
 import yargs, { type Argv, type MiddlewareFunction } from 'yargs'
 
 import type { CommandModule } from 'lib/command-module.js'
-import { defaultMiddleware } from 'lib/context.js'
+import { type DefaultContext, defaultMiddleware } from 'lib/context.js'
 
 export interface LandlubberOptions {
   middleware?: MiddlewareFunction[]
 }
 
-export const landlubber = (
-  commands: CommandModule[] = [],
+export const landlubber = <Context = DefaultContext>(
+  commands: Array<CommandModule<Context>> = [],
   { middleware = defaultMiddleware }: LandlubberOptions = {}
 ): Argv => {
   const argv = yargs(process.argv.slice(2)).middleware(middleware)
