@@ -1,9 +1,14 @@
 import process from 'node:process'
 
-import yargs, { type Argv, type MiddlewareFunction } from 'yargs'
+import yargs, {
+  type Argv,
+  type MiddlewareFunction as YargsMiddlewareFunction
+} from 'yargs'
 
 import type { CommandModule } from 'lib/command-module.js'
 import { type DefaultContext, defaultMiddleware } from 'lib/context.js'
+
+export type MiddlewareFunction = YargsMiddlewareFunction
 
 export interface LandlubberOptions {
   middleware?: MiddlewareFunction[]
