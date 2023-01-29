@@ -9,6 +9,7 @@ import {
 
 import * as assertCommand from './fixtures/assert-command.js'
 import * as defaultCommand from './fixtures/default-command.js'
+import type { TestContext } from './fixtures/test-context.js'
 
 test('command runs with default context', async (t) => {
   const argv = await landlubber([defaultCommand], {
@@ -22,7 +23,7 @@ test('command runs with test context', async (t) => {
     argv['t'] = t
   }
 
-  await landlubber([assertCommand], {
+  await landlubber<TestContext>([assertCommand], {
     middleware: [testMiddleware],
     argv: ['', '', 'assert', 'bar']
   }).parse()
@@ -33,12 +34,12 @@ test('runs multiple commands', async (t) => {
     argv['t'] = t
   }
 
-  await landlubber([defaultCommand, assertCommand], {
+  await landlubber<TestContext>([defaultCommand, assertCommand], {
     middleware: [testMiddleware],
     argv: ['', '', 'foo', 'bar']
   }).parse()
 
-  await landlubber([defaultCommand, assertCommand], {
+  await landlubber<TestContext>([defaultCommand, assertCommand], {
     middleware: [testMiddleware],
     argv: ['', '', 'assert', 'bar']
   }).parse()
@@ -52,7 +53,7 @@ test('logger is in default context', async (t) => {
     }
   }
 
-  await landlubber([assertCommand], {
+  await landlubber<TestContext>([assertCommand], {
     middleware: [...defaultMiddleware, testMiddleware],
     argv: ['', '', 'assert', 'bar']
   }).parse()
@@ -66,7 +67,7 @@ test('logger is not in overridden context', async (t) => {
     }
   }
 
-  await landlubber([assertCommand], {
+  await landlubber<TestContext>([assertCommand], {
     middleware: [testMiddleware],
     argv: ['', '', 'assert', 'bar']
   }).parse()
