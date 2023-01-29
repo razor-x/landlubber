@@ -134,15 +134,26 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
   example:
-    name: Example (Node.js v${{ matrix.node }})
+    name: Example (Node.js v${{ matrix.node }} on ${{ matrix.os_name }})
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
         node:
           - '16'
           - '18'
+        include:
+          - os: ubuntu-latest
+            os_name: Linux
+          - os: macos-latest
+            os_name: macOS
+          - os: windows-latest
+            os_name: Windows
     steps:
       - name: Checkout
         uses: actions/checkout@v3
