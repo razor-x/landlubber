@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { landlubber } from 'index.js'
+import landlubber from 'index.js'
 
 import * as todo from './todo.js'
 
