@@ -31,45 +31,9 @@ $ npm install landlubber
 
 ### Hello world
 
-#### JavaScript
-
-##### `hello.js`
-
-```ts
-export const command = 'hello name'
-
-export const describe = 'Say hello'
-
-export const builder = {
-  name: {
-    type: 'string',
-    default: 'landlubber',
-    describe: 'Who to greet'
-  }
-}
-
-export const handler = async ({ name, logger }) => {
-  logger.info({ landlubber: name }, 'Ahoy!')
-}
-```
-
-##### `index.js`
-
-```js
-#!/usr/bin/env node
-
-import landlubber from 'landlubber'
-
-import * as hello from './hello.js'
-
-const commands = [hello]
-
-await landlubber(commands).parse()
-```
-
 #### TypeScript
 
-##### `hello.ts`
+##### hello.ts
 
 ```ts
 import type { Builder, Command, Describe, Handler } from 'landlubber'
@@ -95,10 +59,46 @@ export const handler: Handler<Options> = async ({ name, logger }) => {
 }
 ```
 
-##### `index.ts`
+##### index.ts
 
 ```ts
 #!/usr/bin/env tsx
+
+import landlubber from 'landlubber'
+
+import * as hello from './hello.js'
+
+const commands = [hello]
+
+await landlubber(commands).parse()
+```
+
+#### JavaScript
+
+##### hello.js
+
+```ts
+export const command = 'hello name'
+
+export const describe = 'Say hello'
+
+export const builder = {
+  name: {
+    type: 'string',
+    default: 'landlubber',
+    describe: 'Who to greet'
+  }
+}
+
+export const handler = async ({ name, logger }) => {
+  logger.info({ landlubber: name }, 'Ahoy!')
+}
+```
+
+##### index.js
+
+```js
+#!/usr/bin/env node
 
 import landlubber from 'landlubber'
 
