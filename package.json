@@ -1,7 +1,7 @@
 {
-  "name": "@makenew/tsmodule",
-  "version": "0.0.2",
-  "description": "Package skeleton for a TypeScript module.",
+  "name": "landlubber",
+  "version": "0.0.0",
+  "description": "Quickest way to write commands for yargs without leaving the shore.",
   "type": "module",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -13,9 +13,9 @@
   "keywords": [
     "node"
   ],
-  "homepage": "https://github.com/makenew/tsmodule",
-  "bugs": "https://github.com/makenew/tsmodule/issues",
-  "repository": "makenew/tsmodule",
+  "homepage": "https://github.com/razor-x/landlubber",
+  "bugs": "https://github.com/razor-x/landlubber/issues",
+  "repository": "razor-x/landlubber",
   "license": "MIT",
   "author": {
     "name": "Evan Sosenko",
