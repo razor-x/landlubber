@@ -56,13 +56,13 @@
     "npm": ">= 8.1.0"
   },
   "dependencies": {
+    "@types/yargs": "^17.0.20",
     "pino": "^8.8.0",
     "pino-pretty": "^9.1.1",
     "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "@types/yargs": "^17.0.19",
     "ava": "^5.0.1",
     "c8": "^7.11.0",
     "del-cli": "^5.0.0",
