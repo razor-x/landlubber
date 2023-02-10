@@ -1,4 +1,4 @@
-import process from 'node:process'
+import { argv as defaultArgv } from 'node:process'
 
 import yargs, {
   type Argv,
@@ -17,10 +17,7 @@ export interface LandlubberOptions {
 
 export const landlubber = <Context = DefaultContext>(
   commands: Array<CommandModule<Context>> = [],
-  {
-    middleware = defaultMiddleware,
-    argv = process.argv
-  }: LandlubberOptions = {}
+  { middleware = defaultMiddleware, argv = defaultArgv }: LandlubberOptions = {}
 ): Argv => {
   const builder = yargs(argv.slice(2)).middleware(middleware)
 

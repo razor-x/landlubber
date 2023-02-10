@@ -1,8 +1,8 @@
-import process from 'node:process'
+import { env } from 'node:process'
 
 export default () => {
   // UPSTREAM: https://nodejs.org/docs/latest-v18.x/api/esm.html#loaders
-  process.env.NODE_NO_WARNINGS = '1'
+  env.NODE_NO_WARNINGS = '1'
 
   return {
     files: ['**/*.spec.ts', '!package/**/*'],
