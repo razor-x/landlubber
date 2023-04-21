@@ -58,7 +58,7 @@
   "dependencies": {
     "@types/yargs": "^17.0.20",
     "pino": "^8.8.0",
-    "pino-pretty": "^9.1.1",
+    "pino-pretty": "^10.0.0",
     "yargs": "^17.6.2"
   },
   "devDependencies": {
