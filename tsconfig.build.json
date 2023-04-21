@@ -4,10 +4,11 @@
   "compilerOptions": {
     "noEmit": false,
     "noEmitOnError": true,
+    "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./"
   },
   "files": ["src/index.ts"],
   "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "exclude": ["**/*.test.ts"]
 }
