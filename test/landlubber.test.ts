@@ -2,10 +2,9 @@ import test from 'ava'
 
 import {
   type DefaultContext,
-  type MiddlewareFunction,
   defaultMiddleware,
-  landlubber
-} from 'landlubber'
+  landlubber,
+  type MiddlewareFunction} from 'landlubber'
 
 import * as assertCommand from './fixtures/assert-command.js'
 import * as defaultCommand from './fixtures/default-command.js'
