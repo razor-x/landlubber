@@ -1,4 +1,4 @@
-import type { Builder, Command, Describe, Handler } from 'index.js'
+import type { Builder, Command, Describe, Handler } from 'landlubber'
 
 interface Options {
   input: string

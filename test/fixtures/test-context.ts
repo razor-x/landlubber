@@ -1,6 +1,6 @@
 import type { ExecutionContext } from 'ava'
 
-import type { DefaultContext } from 'index.js'
+import type { DefaultContext } from 'landlubber'
 
 export type TestContext = DefaultContext & {
   t: ExecutionContext

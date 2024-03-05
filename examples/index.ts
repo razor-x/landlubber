@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import landlubber from 'index.js'
+import landlubber from 'landlubber'
 
 import * as adventure from './adventure.js'
 import * as hello from './hello.js'
