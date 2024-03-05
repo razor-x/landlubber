@@ -1,9 +1,9 @@
 {
-  "name": "Node.js",
+  "name": "TypeScript",
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "VARIANT": "18"
+      "VARIANT": "20"
     }
   },
   "extensions": [

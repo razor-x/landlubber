@@ -1,54 +1,63 @@
 {
   "root": true,
-  "extends": ["standard-with-typescript", "prettier"],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "import/extensions": ["error", "ignorePackages"],
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      {
-        "fixStyle": "inline-type-imports"
-      }
-    ],
-    "sort-imports": [
-      "error",
-      {
-        "ignoreDeclarationSort": true,
-        "allowSeparatedGroups": true
-      }
-    ],
     "import/no-duplicates": ["error", { "prefer-inline": true }],
-    "import/order": [
+    "import/no-relative-parent-imports": "error",
+    "simple-import-sort/imports": [
       "error",
       {
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc"
-        },
         "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "pathGroups": [
-          {
-            "pattern": "index.js",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "lib/**",
-            "group": "internal"
-          }
+          ["^\\u0000"],
+          ["^node:"],
+          ["^@?\\w"],
+          ["landlubber"],
+          ["^lib/"],
+          ["^"],
+          ["^\\."]
         ]
       }
-    ]
-  }
+    ],
+    "simple-import-sort/exports": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.mjs", "*.cjs"],
+      "extends": ["standard", "prettier"]
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["standard-with-typescript", "prettier"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/no-import-type-side-effects": "error",
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          {
+            "fixStyle": "inline-type-imports"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
 }

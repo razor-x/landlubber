@@ -5,7 +5,7 @@ import {
   type MiddlewareFunction,
   defaultMiddleware,
   landlubber
-} from 'index.js'
+} from 'landlubber'
 
 import * as assertCommand from './fixtures/assert-command.js'
 import * as defaultCommand from './fixtures/default-command.js'

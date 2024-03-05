@@ -1,26 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.standard.json",
   "compilerOptions": {
+    "composite": true,
     "noEmit": true,
     "strict": true,
     "module": "nodenext",
     "esModuleInterop": true,
     "target": "es2021",
     "jsx": "react-jsx",
-    "declaration": true,
     "sourceMap": true,
     "newLine": "lf",
+    "verbatimModuleSyntax": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
-    "importsNotUsedAsValues": "error",
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "index.js": ["./src/index.ts"],
+      "landlubber": ["./src/index.ts"],
       "lib/*": ["./src/lib/*"]
     }
   },
